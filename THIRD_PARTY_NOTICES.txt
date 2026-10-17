@@ -1,0 +1,73 @@
+KEYCHAIN 1.0 - THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
+============================================================
+
+This project incorporates components from the projects listed below.
+
+------------------------------------------------------------
+1. JSON for Modern C++ (nlohmann/json) - Version 3.11.3
+------------------------------------------------------------
+URL: https://github.com/nlohmann/json
+SHA-256 (single-header json.hpp): 9BEA4C8066EF4A1C206B2BE5A36302F8926F7FDC6087AF5D20B417D0CF103EA6
+
+MIT License
+
+Copyright (c) 2013-2023 Niels Lohmann <https://nlohmann.me>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+------------------------------------------------------------
+2. doctest - Version 2.4.11 (Test Executable Only)
+------------------------------------------------------------
+URL: https://github.com/doctest/doctest
+SHA-256 (doctest.h): 44FAA038E9C3F9728EFBDA143748D01124EA0A27F4BF78F35A15D8FAB2E039FB
+
+MIT License
+
+Copyright (c) 2016-2023 Viktor Kirilov
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+------------------------------------------------------------
+3. Microsoft Windows App SDK - Version 1.8.260921001 (Keychain.Settings.exe Only)
+------------------------------------------------------------
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Microsoft Software License Terms for Windows App SDK.
+https://github.com/microsoft/WindowsAppSDK/blob/main/LICENSE
+
+------------------------------------------------------------
+4. Microsoft Visual C++ Redistributable Runtime Components
+------------------------------------------------------------
+Copyright (c) Microsoft Corporation. All rights reserved.
+Redistributed in accordance with the Microsoft Visual Studio Distributable Code terms.

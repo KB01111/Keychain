@@ -1,0 +1,96 @@
+name: build
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    # windows-2022 ships Visual Studio 2022 (with the C++ workload), CMake and the .NET SDK
+    runs-on: windows-2022
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Report toolchain
+        shell: pwsh
+        run: |
+          Write-Host "cmake: $((Get-Command cmake -ErrorAction SilentlyContinue).Source)"
+          cmake --version
+          dotnet --info | Select-Object -First 20
+          $dxc = Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin" -Recurse -Filter dxc.exe -ErrorAction SilentlyContinue |
+                 Where-Object { $_.FullName -match '\\x64\\dxc\.exe$' } | Select-Object -First 1
+          if ($dxc) { Write-Host "dxc: $($dxc.FullName)" } else { Write-Host "dxc: NOT FOUND" }
+
+      - name: Configure (native)
+        shell: pwsh
+        run: cmake --preset windows-x64-vs2022
+
+      - name: Build (native launcher, core, tests, shaders)
+        shell: pwsh
+        run: cmake --build --preset release --config Release
+
+      - name: Test (native suite)
+        shell: pwsh
+        run: ctest --test-dir build/vs2022-x64 -C Release --output-on-failure
+
+      - name: Build (WinUI 3 settings app)
+        shell: pwsh
+        # The settings project must be built with the dotnet CLI: it needs the .NET SDK
+        # resolvers that the Visual Studio MSBuild on GitHub runners does not always expose
+        # for Microsoft.NET.Sdk when the runner only has the Build Tools workloads.
+        run: dotnet build settings/Keychain.Settings.csproj -c Release -p:Platform=x64
+
+      - name: Upload build log artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs
+          path: |
+            build/vs2022-x64/**/*.log
+            settings/**/bin/**/*.log
+          if-no-files-found: ignore
+
+  package:
+    needs: build-and-test
+    runs-on: windows-2022
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure (native)
+        shell: pwsh
+        run: cmake --preset windows-x64-vs2022
+
+      - name: Build (native)
+        shell: pwsh
+        run: cmake --build --preset release --config Release
+
+      - name: Build (settings)
+        shell: pwsh
+        run: dotnet build settings/Keychain.Settings.csproj -c Release -p:Platform=x64
+
+      - name: Package (portable zip)
+        shell: pwsh
+        run: |
+          # Inno Setup is not preinstalled on GitHub runners, so CI produces the
+          # folder-based portable archive only. The installer is built locally
+          # with scripts/package.ps1 (see BUILD.md).
+          New-Item -ItemType Directory -Force -Path artifacts | Out-Null
+          Compress-Archive -Path build/vs2022-x64/Release/Keychain.exe, assets/shaders -DestinationPath artifacts/Keychain-native-$(git rev-parse --short HEAD).zip
+          Get-FileHash artifacts/*.zip -Algorithm SHA256 | Format-Table -AutoSize
+
+      - name: Upload portable package
+        uses: actions/upload-artifact@v4
+        with:
+          name: keychain-portable
+          path: artifacts/*

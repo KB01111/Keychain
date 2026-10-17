@@ -1,0 +1,109 @@
+<Page
+    x:Class="Keychain.Settings.Pages.AppearanceMotionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <StackPanel Spacing="20" Margin="24,24,24,32" MaxWidth="720" HorizontalAlignment="Left">
+
+            <TextBlock Text="Appearance and Motion"
+                       Style="{StaticResource SubtitleTextBlockStyle}"
+                       AutomationProperties.Name="Appearance and Motion heading" />
+            <TextBlock Text="Midnight Glass visual identity. Changes stream to the live preview while it is running."
+                       Style="{StaticResource CaptionTextBlockStyle}"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+
+            <!-- Theme -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="Theme" Style="{StaticResource BodyStrongTextBlockStyle}" AutomationProperties.Name="Theme heading" />
+                <RadioButtons x:Name="ThemeDarkRadio" Header="Dark (Midnight Glass)" AutomationProperties.Name="Dark theme" SelectionChanged="OnThemeChanged">
+                    <x:String>Dark</x:String>
+                </RadioButtons>
+                <RadioButtons x:Name="ThemeLightRadio" Header="Light" AutomationProperties.Name="Light theme" SelectionChanged="OnThemeChanged">
+                    <x:String>Light</x:String>
+                </RadioButtons>
+                <RadioButtons x:Name="ThemeSystemRadio" Header="Follow system" AutomationProperties.Name="Follow system theme" SelectionChanged="OnThemeChanged">
+                    <x:String>System</x:String>
+                </RadioButtons>
+            </StackPanel>
+
+            <!-- Accent color -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="Accent color" Style="{StaticResource BodyStrongTextBlockStyle}" AutomationProperties.Name="Accent color heading" />
+                <ColorPicker x:Name="AccentColorPicker"
+                             IsAlphaEnabled="False"
+                             IsColorSpectrumVisible="True"
+                             IsColorSliderVisible="True"
+                             IsMoreButtonVisible="False"
+                             MaxWidth="360"
+                             ColorChanged="OnAccentColorChanged"
+                             AutomationProperties.Name="Accent color picker" />
+            </StackPanel>
+
+            <!-- Glass material -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="Glass material" Style="{StaticResource BodyStrongTextBlockStyle}" AutomationProperties.Name="Glass material heading" />
+                <Slider x:Name="GlassOpacitySlider"
+                        Header="Glass opacity"
+                        Minimum="0.35" Maximum="1.0" StepFrequency="0.01"
+                        Width="360" HorizontalAlignment="Left"
+                        ValueChanged="OnGlassOpacityChanged"
+                        AutomationProperties.Name="Glass opacity slider" />
+                <Slider x:Name="IconSizeSlider"
+                        Header="Icon size (DIPs)"
+                        Minimum="16" Maximum="40" StepFrequency="1"
+                        Width="360" HorizontalAlignment="Left"
+                        ValueChanged="OnIconSizeChanged"
+                        AutomationProperties.Name="Icon size slider" />
+            </StackPanel>
+
+            <!-- Motion -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="Motion" Style="{StaticResource BodyStrongTextBlockStyle}" AutomationProperties.Name="Motion heading" />
+                <RadioButtons x:Name="MotionStandardRadio" Header="Standard springs" AutomationProperties.Name="Standard motion preset" SelectionChanged="OnMotionPresetChanged">
+                    <x:String>Standard</x:String>
+                </RadioButtons>
+                <RadioButtons x:Name="MotionSnappyRadio" Header="Snappy" AutomationProperties.Name="Snappy motion preset" SelectionChanged="OnMotionPresetChanged">
+                    <x:String>Snappy</x:String>
+                </RadioButtons>
+                <RadioButtons x:Name="MotionGentleRadio" Header="Gentle" AutomationProperties.Name="Gentle motion preset" SelectionChanged="OnMotionPresetChanged">
+                    <x:String>Gentle</x:String>
+                </RadioButtons>
+                <Slider x:Name="AnimationSpeedSlider"
+                        Header="Animation speed multiplier"
+                        Minimum="0.5" Maximum="2.0" StepFrequency="0.1"
+                        Width="360" HorizontalAlignment="Left"
+                        ValueChanged="OnAnimationSpeedChanged"
+                        AutomationProperties.Name="Animation speed slider" />
+            </StackPanel>
+
+            <!-- Accessibility overrides -->
+            <StackPanel Spacing="8">
+                <TextBlock Text="Accessibility overrides" Style="{StaticResource BodyStrongTextBlockStyle}" AutomationProperties.Name="Accessibility overrides heading" />
+                <ComboBox x:Name="ReducedMotionCombo" Header="Reduced motion" Width="200" HorizontalAlignment="Left"
+                          AutomationProperties.Name="Reduced motion override" SelectedIndex="0"
+                          SelectionChanged="OnReducedMotionOverrideChanged">
+                    <ComboBoxItem Content="System" Tag="System" />
+                    <ComboBoxItem Content="On" Tag="On" />
+                    <ComboBoxItem Content="Off" Tag="Off" />
+                </ComboBox>
+                <ComboBox x:Name="ReducedTransparencyCombo" Header="Reduced transparency" Width="200" HorizontalAlignment="Left"
+                          AutomationProperties.Name="Reduced transparency override" SelectedIndex="0"
+                          SelectionChanged="OnReducedTransparencyOverrideChanged">
+                    <ComboBoxItem Content="System" Tag="System" />
+                    <ComboBoxItem Content="On" Tag="On" />
+                    <ComboBoxItem Content="Off" Tag="Off" />
+                </ComboBox>
+            </StackPanel>
+
+            <Button x:Name="ResetAppearanceButton"
+                    Content="Reset appearance to defaults"
+                    AutomationProperties.Name="Reset appearance to defaults"
+                    Click="OnResetAppearanceClick" />
+
+        </StackPanel>
+    </ScrollViewer>
+</Page>

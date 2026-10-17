@@ -1,0 +1,213 @@
+{
+  "actions": [
+    {
+      "approved": true,
+      "arguments": "",
+      "childRingId": "",
+      "enabled": true,
+      "iconGlyph": "DOC",
+      "id": "act_documents",
+      "label": "Documents",
+      "shortcutChord": "",
+      "target": "",
+      "type": "WindowsAction",
+      "windowsActionName": "Documents",
+      "workingDirectory": ""
+    },
+    {
+      "approved": true,
+      "arguments": "",
+      "childRingId": "",
+      "enabled": true,
+      "iconGlyph": "DL",
+      "id": "act_downloads",
+      "label": "Downloads",
+      "shortcutChord": "",
+      "target": "",
+      "type": "WindowsAction",
+      "windowsActionName": "Downloads",
+      "workingDirectory": ""
+    },
+    {
+      "approved": true,
+      "arguments": "",
+      "childRingId": "",
+      "enabled": true,
+      "iconGlyph": "EXP",
+      "id": "act_explorer",
+      "label": "File Explorer",
+      "shortcutChord": "",
+      "target": "",
+      "type": "WindowsAction",
+      "windowsActionName": "FileExplorer",
+      "workingDirectory": ""
+    },
+    {
+      "approved": true,
+      "arguments": "",
+      "childRingId": "",
+      "enabled": true,
+      "iconGlyph": "TXT",
+      "id": "act_notepad",
+      "label": "Notepad",
+      "shortcutChord": "",
+      "target": "",
+      "type": "WindowsAction",
+      "windowsActionName": "Notepad",
+      "workingDirectory": ""
+    },
+    {
+      "approved": true,
+      "arguments": "",
+      "childRingId": "",
+      "enabled": true,
+      "iconGlyph": "WIN",
+      "id": "act_win_settings",
+      "label": "Windows Settings",
+      "shortcutChord": "",
+      "target": "",
+      "type": "WindowsAction",
+      "windowsActionName": "WindowsSettings",
+      "workingDirectory": ""
+    },
+    {
+      "approved": true,
+      "arguments": "",
+      "childRingId": "",
+      "enabled": true,
+      "iconGlyph": "CFG",
+      "id": "act_keychain_settings",
+      "label": "Keychain Settings",
+      "shortcutChord": "",
+      "target": "",
+      "type": "OpenKeychainSettings",
+      "windowsActionName": "",
+      "workingDirectory": ""
+    },
+    {
+      "approved": true,
+      "arguments": "",
+      "childRingId": "ring_quick_tools",
+      "enabled": true,
+      "iconGlyph": "SUB",
+      "id": "act_child_tools",
+      "label": "Quick Tools",
+      "shortcutChord": "",
+      "target": "",
+      "type": "OpenChildRing",
+      "windowsActionName": "",
+      "workingDirectory": ""
+    },
+    {
+      "approved": true,
+      "arguments": "",
+      "childRingId": "",
+      "enabled": true,
+      "iconGlyph": "TSK",
+      "id": "act_task_manager",
+      "label": "Task Manager",
+      "shortcutChord": "",
+      "target": "",
+      "type": "WindowsAction",
+      "windowsActionName": "TaskManager",
+      "workingDirectory": ""
+    },
+    {
+      "approved": true,
+      "arguments": "",
+      "childRingId": "",
+      "enabled": true,
+      "iconGlyph": "CPY",
+      "id": "act_copy_chord",
+      "label": "Copy Selection",
+      "shortcutChord": "Ctrl+C",
+      "target": "",
+      "type": "SendShortcut",
+      "windowsActionName": "",
+      "workingDirectory": ""
+    },
+    {
+      "approved": true,
+      "arguments": "",
+      "childRingId": "",
+      "enabled": true,
+      "iconGlyph": "PST",
+      "id": "act_paste_chord",
+      "label": "Paste Clipboard",
+      "shortcutChord": "Ctrl+V",
+      "target": "",
+      "type": "SendShortcut",
+      "windowsActionName": "",
+      "workingDirectory": ""
+    }
+  ],
+  "activeProfileId": "profile_default",
+  "preferences": {
+    "accentColorHex": "#5CC8FF",
+    "activationMode": "WinCaps",
+    "animationSpeedMultiplier": 1.0,
+    "childRingDwellMs": 250,
+    "completedTutorial": false,
+    "deadZoneRadiusDip": 44.0,
+    "defaultSectorCount": 6,
+    "efficiencyFrameCapHz": 60,
+    "enabled": true,
+    "foregroundExclusions": [],
+    "glassOpacity": 0.8600000143051147,
+    "iconSizeDip": 24.0,
+    "interactionMode": "Hold",
+    "launchAtStartup": false,
+    "motionPreset": "Standard",
+    "preferredAdapterLuid": "",
+    "qualityPreset": "Auto",
+    "redactPathsInDiagnostics": true,
+    "reducedMotionOverride": "System",
+    "reducedTransparencyOverride": "System",
+    "ringDiameterDip": 380.0,
+    "sectorGapDip": 3.5,
+    "showTrayIcon": true,
+    "theme": "Dark"
+  },
+  "profiles": [
+    {
+      "exclusions": [],
+      "id": "profile_default",
+      "name": "Default Profile",
+      "rootRingId": "ring_root_default"
+    }
+  ],
+  "revision": 1,
+  "rings": [
+    {
+      "id": "ring_root_default",
+      "isChildRing": false,
+      "name": "Main Ring",
+      "parentRingId": "",
+      "sectorActionIds": [
+        "act_documents",
+        "act_downloads",
+        "act_explorer",
+        "act_notepad",
+        "act_win_settings",
+        "act_keychain_settings"
+      ],
+      "sectorCount": 6
+    },
+    {
+      "id": "ring_quick_tools",
+      "isChildRing": true,
+      "name": "Quick Tools",
+      "parentRingId": "ring_root_default",
+      "sectorActionIds": [
+        "act_task_manager",
+        "act_copy_chord",
+        "act_paste_chord",
+        "act_documents",
+        "act_explorer",
+        "act_keychain_settings"
+      ],
+      "sectorCount": 6
+    }
+  ],
+  "schemaVersion": 1
+}

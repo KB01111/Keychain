@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="Keychain.Settings.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:pages="using:Keychain.Settings.Pages">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <NavigationView
+        x:Name="Nav"
+        Grid.Row="0"
+        IsBackButtonVisible="Collapsed"
+        IsSettingsVisible="False"
+        SelectionChanged="OnNavSelectionChanged"
+        AutomationProperties.Name="Settings navigation">
+      <NavigationView.MenuItems>
+        <NavigationViewItem Content="General" Tag="general" AutomationProperties.Name="General settings">
+            <NavigationViewItem.Icon>
+                <FontIcon Glyph="&#xE713;"/>
+            </NavigationViewItem.Icon>
+        </NavigationViewItem>
+        <NavigationViewItem Content="Hotring" Tag="hotring" AutomationProperties.Name="Hotring settings">
+            <NavigationViewItem.Icon>
+                <FontIcon Glyph="&#xE765;"/>
+            </NavigationViewItem.Icon>
+        </NavigationViewItem>
+        <NavigationViewItem Content="Actions and Profiles" Tag="actions" AutomationProperties.Name="Actions and profiles">
+            <NavigationViewItem.Icon>
+                <FontIcon Glyph="&#xE8FD;"/>
+            </NavigationViewItem.Icon>
+        </NavigationViewItem>
+        <NavigationViewItem Content="Appearance and Motion" Tag="appearance" AutomationProperties.Name="Appearance and motion">
+            <NavigationViewItem.Icon>
+                <FontIcon Glyph="&#xE790;"/>
+            </NavigationViewItem.Icon>
+        </NavigationViewItem>
+        <NavigationViewItem Content="Performance and Diagnostics" Tag="diagnostics" AutomationProperties.Name="Performance and diagnostics">
+            <NavigationViewItem.Icon>
+                <FontIcon Glyph="&#xE90F;"/>
+            </NavigationViewItem.Icon>
+        </NavigationViewItem>
+      </NavigationView.MenuItems>
+      <Frame x:Name="ContentFrame"/>
+    </NavigationView>
+    <Border Grid.Row="1" Background="{ThemeResource LayerFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="0,1,0,0" Padding="16,10">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
+          <FontIcon Glyph="&#xE928;" FontSize="14"/>
+          <TextBlock x:Name="DraftStatus" Text="No pending changes." VerticalAlignment="Center" AutomationProperties.Name="Draft status"/>
+        </StackPanel>
+        <Button x:Name="DiscardButton" Grid.Column="1" Content="Discard changes" Margin="0,0,12,0"
+                MinWidth="130" Click="OnDiscardClick" AutomationProperties.Name="Discard changes"/>
+        <Button x:Name="ApplyButton" Grid.Column="2" Content="Apply" Style="{StaticResource AccentButtonStyle}"
+                MinWidth="130" Click="OnApplyClick" AutomationProperties.Name="Apply configuration"/>
+      </Grid>
+    </Border>
+    <InfoBar x:Name="Status" Grid.Row="0" VerticalAlignment="Top" Margin="12,8,12,0" IsOpen="False" IsClosable="True"/>
+  </Grid>
+</Window>

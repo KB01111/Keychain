@@ -1,0 +1,77 @@
+<Page
+    x:Class="Keychain.Settings.Pages.PerformanceDiagnosticsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <StackPanel Spacing="16" Margin="24,16,24,24" MaxWidth="1100" HorizontalAlignment="Left">
+
+            <TextBlock Text="Quality and power" Style="{StaticResource SubtitleTextBlockStyle}" />
+            <StackPanel Orientation="Horizontal" Spacing="24">
+                <ComboBox x:Name="QualityPresetCombo" Width="220" Header="Quality preset"
+                          AutomationProperties.Name="Quality preset"
+                          SelectionChanged="OnQualityPresetChanged">
+                    <ComboBoxItem Tag="Auto" Content="Auto (full cadence, decorative work reduced first)" />
+                    <ComboBoxItem Tag="Performance" Content="Performance" />
+                    <ComboBoxItem Tag="Efficiency" Content="Efficiency (user-selected frame cap)" />
+                </ComboBox>
+                <NumberBox x:Name="EfficiencyFrameCap" Width="160" Header="Frame cap (Hz)"
+                           AutomationProperties.Name="Efficiency frame cap"
+                           Minimum="30" Maximum="240" SmallChange="10" Value="60"
+                           Visibility="Collapsed" ValueChanged="OnFrameCapChanged" />
+                <ComboBox x:Name="AdapterCombo" Width="320" Header="Graphics adapter"
+                          AutomationProperties.Name="Graphics adapter"
+                          SelectionChanged="OnAdapterChanged" />
+            </StackPanel>
+            <TextBox x:Name="ForegroundExclusionsBox" Width="600" MinHeight="64" Header="Global foreground exclusions (one executable name per line; the ring stays inactive for these apps)"
+                     TextWrapping="Wrap" AcceptsReturn="True"
+                     AutomationProperties.Name="Global foreground exclusions"
+                     LostFocus="OnExclusionsChanged" />
+            <ToggleSwitch x:Name="RedactPathsToggle" Header="Redact user paths in diagnostics"
+                          OnContent="On" OffContent="Off"
+                          AutomationProperties.Name="Redact user paths in diagnostics"
+                          Toggled="OnRedactChanged" />
+
+            <TextBlock Text="Live diagnostics" Style="{StaticResource SubtitleTextBlockStyle}" Margin="0,12,0,0" />
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button x:Name="RefreshButton" Content="Refresh" Style="{StaticResource AccentButtonStyle}"
+                        Click="OnRefreshClick" AutomationProperties.Name="Refresh diagnostics" />
+                <Button x:Name="ExportButton" Content="Export diagnostics report..." Click="OnExportClick"
+                        AutomationProperties.Name="Export diagnostics report" />
+                <Button x:Name="ResetInputButton" Content="Reset and reinstall input hooks" Click="OnResetInputClick"
+                        AutomationProperties.Name="Reset and reinstall input hooks" />
+            </StackPanel>
+            <StackPanel x:Name="StatusGrid" Spacing="4" />
+            <TextBlock Text="Measured latency (milliseconds)" Style="{StaticResource BodyStrongTextBlockStyle}" />
+            <TextBlock x:Name="MetricsText" TextWrapping="Wrap" IsTextSelectionEnabled="True" />
+            <TextBlock Text="Monitors" Style="{StaticResource BodyStrongTextBlockStyle}" />
+            <ItemsControl x:Name="MonitorsList">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" TextWrapping="Wrap" Margin="0,2,0,2" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <TextBlock Text="Graphics adapters" Style="{StaticResource BodyStrongTextBlockStyle}" />
+            <ItemsControl x:Name="AdaptersList">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" TextWrapping="Wrap" Margin="0,2,0,2" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <TextBlock Text="Recent events" Style="{StaticResource BodyStrongTextBlockStyle}" />
+            <ItemsControl x:Name="EntriesList" MaxHeight="220">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" TextWrapping="Wrap" Margin="0,2,0,2" IsTextSelectionEnabled="True" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+    </ScrollViewer>
+</Page>

@@ -1,0 +1,32 @@
+# Native / CMake build outputs
+build/
+out/
+artifacts/
+
+# Packaging output (binaries are large and reproducible via scripts/package.ps1);
+# keep the checksum manifest in-repo.
+dist/*
+!dist/SHA256SUMS.txt
+
+# Managed (settings) build outputs
+**/bin/
+**/obj/
+
+# IDE
+.vs/
+.vscode/
+*.user
+*.suo
+*.aps
+*.pdb
+*.ilk
+*.exp
+
+# Large regenerable captures (small PNG/JSON evidence stays tracked)
+verification/performance/*.csv
+verification/**/*.csv
+
+# OS noise
+Thumbs.db
+desktop.ini
+.DS_Store

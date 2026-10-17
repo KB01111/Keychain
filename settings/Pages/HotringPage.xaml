@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Keychain.Settings.Pages.HotringPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="36,24,36,24">
+    <StackPanel Spacing="8" MaxWidth="760" HorizontalAlignment="Left">
+      <TextBlock Text="Hotring" Style="{StaticResource TitleTextBlockStyle}" Margin="0,0,0,12"/>
+
+      <StackPanel Spacing="8" Margin="0,0,0,20">
+        <TextBlock Text="Activation chord" Style="{StaticResource BodyStrongTextBlockStyle}"/>
+        <RadioButton x:Name="ChordWinCaps" Content="Windows key + Caps Lock (hold Win, then press and hold Caps Lock)"
+                     Checked="OnChordChecked" AutomationProperties.Name="Win plus Caps activation"/>
+        <RadioButton x:Name="ChordCtrlAltSpace" Content="Ctrl + Alt + Space (alternative without Windows key)"
+                     Checked="OnChordChecked" AutomationProperties.Name="Ctrl Alt Space activation"/>
+        <InfoBar x:Name="ChordNote" IsOpen="True" IsClosable="False" Severity="Informational"
+                 Message="Win + Caps keeps ordinary Caps Lock behavior when Caps is pressed before Win. Ctrl+Alt+Space is checked against conflicts when applied."/>
+      </StackPanel>
+
+      <StackPanel Spacing="8" Margin="0,0,0,20">
+        <TextBlock Text="Interaction mode" Style="{StaticResource BodyStrongTextBlockStyle}"/>
+        <RadioButton x:Name="ModeHold" Content="Hold mode - release the activation key to commit"
+                     Checked="OnModeChecked" AutomationProperties.Name="Hold mode"/>
+        <RadioButton x:Name="ModeToggle" Content="Toggle mode (accessibility) - open with the chord, navigate with arrows, Enter commits, Escape cancels"
+                     Checked="OnModeChecked" AutomationProperties.Name="Toggle mode"/>
+      </StackPanel>
+
+      <StackPanel Spacing="8" Margin="0,0,0,20">
+        <TextBlock Text="Ring geometry" Style="{StaticResource BodyStrongTextBlockStyle}"/>
+        <TextBlock Text="Ring diameter (DIPs)" Style="{StaticResource BodyTextBlockStyle}"/>
+        <Slider x:Name="Diameter" Minimum="260" Maximum="540" StepFrequency="10" ValueChanged="OnDiameterChanged"
+               AutomationProperties.Name="Ring diameter"/>
+        <TextBlock Text="Center dead zone radius (DIPs)" Style="{StaticResource BodyTextBlockStyle}"/>
+        <Slider x:Name="DeadZone" Minimum="24" Maximum="80" StepFrequency="2" ValueChanged="OnDeadZoneChanged"
+               AutomationProperties.Name="Dead zone radius"/>
+        <TextBlock Text="Sector gap (DIPs)" Style="{StaticResource BodyTextBlockStyle}"/>
+        <Slider x:Name="SectorGap" Minimum="1" Maximum="10" StepFrequency="0.5" ValueChanged="OnSectorGapChanged"
+               AutomationProperties.Name="Sector gap"/>
+        <StackPanel Orientation="Horizontal" Spacing="16" Margin="0,8,0,0">
+          <TextBlock Text="Default sector count:" VerticalAlignment="Center" Style="{StaticResource BodyTextBlockStyle}"/>
+          <RadioButton x:Name="Sectors6" Content="6" Checked="OnSectorCountChecked" AutomationProperties.Name="Six sectors"/>
+          <RadioButton x:Name="Sectors8" Content="8" Checked="OnSectorCountChecked" AutomationProperties.Name="Eight sectors"/>
+        </StackPanel>
+      </StackPanel>
+
+      <StackPanel Spacing="8" Margin="0,0,0,20">
+        <TextBlock Text="Child-ring dwell (ms)" Style="{StaticResource BodyStrongTextBlockStyle}"/>
+        <Slider x:Name="Dwell" Minimum="100" Maximum="1000" StepFrequency="10" ValueChanged="OnDwellChanged"
+               AutomationProperties.Name="Child ring dwell"/>
+      </StackPanel>
+
+      <StackPanel Spacing="8" Margin="0,0,0,20">
+        <TextBlock Text="Live preview" Style="{StaticResource BodyStrongTextBlockStyle}"/>
+        <StackPanel Orientation="Horizontal" Spacing="12">
+          <ToggleButton x:Name="PreviewToggle" Content="Preview ring on screen" Click="OnPreviewToggle"
+                       AutomationProperties.Name="Preview ring on screen"/>
+          <ProgressRing x:Name="PreviewBusy" IsActive="False" Width="20" Height="20" Visibility="Collapsed"/>
+        </StackPanel>
+        <TextBlock Text="Preview commands the real Keychain DX12 overlay in non-executing mode. It ends when you turn it off, leave it idle, or close settings; no action ever runs from a preview."
+                   Style="{StaticResource CaptionTextBlockStyle}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="Wrap"/>
+      </StackPanel>
+
+      <InfoBar x:Name="PageStatus" IsOpen="False" IsClosable="True"/>
+    </StackPanel>
+  </ScrollViewer>
+</Page>

@@ -1,0 +1,59 @@
+{
+  "activeFrameCpuMs": {
+    "max": 13.24,
+    "p50": 2.403,
+    "p95": 6.933599999999998,
+    "p99": 10.544739999999965,
+    "sampleCount": 695
+  },
+  "activeFrameGpuMs": {
+    "max": 0.2486,
+    "p50": 0.11332,
+    "p95": 0.124652,
+    "p99": 0.15192819999999968,
+    "sampleCount": 695
+  },
+  "frameIntervalMs": {
+    "p50": 6.9619,
+    "p95": 12.588369999999996,
+    "p99": 15.388085999999998,
+    "sampleCount": 695
+  },
+  "hardware": {
+    "activeMonitorDpi": 144,
+    "activeMonitorRefreshHz": 240,
+    "adapterDescription": "AMD Radeon(TM) 890M Graphics",
+    "adapterLuid": "000000001CEF8552",
+    "compositorClockAvailable": true,
+    "compositorClockStatus": "CompositorClock",
+    "featureLevel": "D3D_FEATURE_LEVEL_12_0",
+    "shaderModel": "SM_6_0"
+  },
+  "hotkeyToFirstSubmissionMs": {
+    "max": 68.34909999999999,
+    "p50": 22.68855,
+    "p95": 29.254785000000002,
+    "p99": 49.34920299999992,
+    "sampleCount": 50
+  },
+  "idleVerification": {
+    "durationSeconds": 2.0093695,
+    "extraFramesDuringSettledVisible2s": 0,
+    "submittedFramesDuringHiddenIdle": 0,
+    "totalProcessCpuMsDuringIdle": 0.0
+  },
+  "memoryAndHandles": {
+    "handleCount": 523,
+    "privateMiB": 89.55078125,
+    "totalSubmittedFrames": 695,
+    "workingSetMiB": 106.68359375
+  },
+  "monitors": [
+    {
+      "deviceName": "\\\\.\\DISPLAY11",
+      "dpi": 144,
+      "isPrimary": true,
+      "refreshRateHz": 240
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "nativeDependencies": [
+    {
+      "name": "nlohmann/json",
+      "version": "3.11.3",
+      "license": "MIT",
+      "sourceUrl": "https://github.com/nlohmann/json/releases/download/v3.11.3/json.hpp",
+      "localPath": "third_party/nlohmann/json.hpp",
+      "sha256": "9BEA4C8066EF4A1C206B2BE5A36302F8926F7FDC6087AF5D20B417D0CF103EA6"
+    },
+    {
+      "name": "doctest",
+      "version": "2.4.11",
+      "license": "MIT",
+      "sourceUrl": "https://raw.githubusercontent.com/doctest/doctest/v2.4.11/doctest/doctest.h",
+      "localPath": "third_party/doctest/doctest.h",
+      "sha256": "44FAA038E9C3F9728EFBDA143748D01124EA0A27F4BF78F35A15D8FAB2E039FB"
+    }
+  ],
+  "managedDependencies": [
+    {
+      "name": "Microsoft.WindowsAppSDK",
+      "version": "1.8.260921001",
+      "license": "MICROSOFT SOFTWARE LICENSE TERMS - WINDOWS APP SDK",
+      "targetFramework": "net8.0-windows10.0.26100.0"
+    },
+    {
+      "name": "Microsoft.Windows.SDK.BuildTools",
+      "version": "10.0.26100.4654",
+      "license": "MICROSOFT SOFTWARE LICENSE TERMS"
+    }
+  ]
+}

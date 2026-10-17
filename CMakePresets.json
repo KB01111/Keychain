@@ -1,0 +1,50 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 24,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "windows-x64-vs2022",
+      "displayName": "Windows x64 (Visual Studio 2022)",
+      "description": "Builds Keychain native targets with Visual Studio 17 2022 x64 toolset",
+      "generator": "Visual Studio 17 2022",
+      "architecture": {
+        "value": "x64",
+        "strategy": "set"
+      },
+      "binaryDir": "${sourceDir}/build/vs2022-x64",
+      "cacheVariables": {
+        "CMAKE_SYSTEM_VERSION": "10.0.26100.0",
+        "KEYCHAIN_BUILD_TESTS": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "release",
+      "displayName": "Release x64",
+      "configurePreset": "windows-x64-vs2022",
+      "configuration": "Release"
+    },
+    {
+      "name": "debug",
+      "displayName": "Debug x64",
+      "configurePreset": "windows-x64-vs2022",
+      "configuration": "Debug"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "release-tests",
+      "displayName": "Run Native Tests (Release)",
+      "configurePreset": "windows-x64-vs2022",
+      "configuration": "Release",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
+}
